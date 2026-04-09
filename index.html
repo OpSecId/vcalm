@@ -2557,7 +2557,7 @@ the `saas.example` domain in the list of protocols.
         </p>
 
         <figure>
-          <pre class="mermaid">
+          <pre class="mermaid" style="max-width:100%">
 sequenceDiagram
     participant W as Holder Coordinator (Wallet)
     participant I as Issuer/Verifier Coordinator (brand.example)
@@ -2665,7 +2665,7 @@ A diagram of the steps outlined above is presented below:
         </p>
 
         <figure>
-          <pre class="mermaid">
+          <pre class="mermaid" style="max-width:100%">
 sequenceDiagram
     participant H as Holder
     participant W as Holder Coordinator (Wallet)
@@ -2673,11 +2673,11 @@ sequenceDiagram
     autonumber
     Note right of H: Start exchange
     W->>I: Initiate
-    Note right of W: POST /workflows/123/exchanges/abc &mdash; HTTP request to start exchange (e.g., send credentials, get credentials)
+    Note right of W: POST /workflows/123/exchanges/abc - HTTP request to start exchange (e.g., send credentials, get credentials)
     I->>W: Verifiable Presentation Request (VPR)
     Note left of I: VPR includes method of interaction, for purposes of exchange
     W->>I: Verifiable Presentation (VP)
-    Note right of W: POST /workflows/123/exchanges/abc &mdash; sent via interaction mechanism to meet requirements of exchange
+    Note right of W: POST /workflows/123/exchanges/abc - sent via interaction mechanism to meet requirements of exchange
     I->>W: Verifiable Presentation
     Note left of I: VP includes result of exchange (e.g., VCs), or VPR with new interaction request, or error description
           </pre>
@@ -2701,7 +2701,7 @@ receiving Coordinator before proceeding:
         </p>
 
         <figure>
-          <pre class="mermaid">
+          <pre class="mermaid" style="max-width:100%">
 sequenceDiagram
     participant H as Holder
     participant W as Holder Coordinator (Wallet)
@@ -2709,11 +2709,11 @@ sequenceDiagram
     autonumber
     Note right of H: Start exchange with client VPR
     W->>I: Verifiable Presentation Request (VPR)
-    Note right of W: POST /workflows/123/exchanges/abc &mdash; client requests credentials from server before proceeding
+    Note right of W: POST /workflows/123/exchanges/abc - client requests credentials from server before proceeding
     I->>W: Verifiable Presentation (VP) + Verifiable Presentation Request (VPR)
     Note left of I: VP fulfills client request, VPR requests credentials from client
     W->>I: Verifiable Presentation (VP)
-    Note right of W: POST /workflows/123/exchanges/abc &mdash; client fulfills server request
+    Note right of W: POST /workflows/123/exchanges/abc - client fulfills server request
     I->>W: Verifiable Presentation or empty JSON object ({}) response
     Note left of I: VP includes result of exchange (e.g., VCs), or empty JSON object ({}) if complete
           </pre>
@@ -2728,7 +2728,7 @@ sends a counter-request after receiving the server's initial request:
         </p>
 
         <figure>
-          <pre class="mermaid">
+          <pre class="mermaid" style="max-width:100%">
 sequenceDiagram
     participant H as Holder
     participant W as Holder Coordinator (Wallet)
@@ -2736,15 +2736,15 @@ sequenceDiagram
     autonumber
     Note right of H: Start exchange without VPR
     W->>I: Initiate
-    Note right of W: POST /workflows/123/exchanges/abc &mdash; empty JSON object ({})
+    Note right of W: POST /workflows/123/exchanges/abc - empty JSON object ({})
     I->>W: Verifiable Presentation Request (VPR)
     Note left of I: Server requests credentials from client
     W->>I: Verifiable Presentation Request (VPR)
-    Note right of W: POST /workflows/123/exchanges/abc &mdash; client counter-requests credentials from server
+    Note right of W: POST /workflows/123/exchanges/abc - client counter-requests credentials from server
     I->>W: Verifiable Presentation (VP) + Verifiable Presentation Request (VPR)
     Note left of I: VP fulfills client request, VPR resends server request
     W->>I: Verifiable Presentation (VP)
-    Note right of W: POST /workflows/123/exchanges/abc &mdash; client fulfills server request
+    Note right of W: POST /workflows/123/exchanges/abc - client fulfills server request
     I->>W: Verifiable Presentation or empty JSON object ({}) response
     Note left of I: VP includes result of exchange (e.g., VCs), or empty JSON object ({}) if complete
           </pre>
@@ -2836,7 +2836,7 @@ URL, using a QR Code to share it with a [=holder=], and proceeding with the
 `vcapi` protocol:
       </p>
       <figure>
-        <pre class="mermaid">
+        <pre class="mermaid" style="max-width:100%">
 sequenceDiagram
   participant H as Holder
   participant W as Holder Coordinator (Wallet)
@@ -2872,7 +2872,7 @@ URL, using a QR Code to share it with a [=holder=], and proceeding with the
 `vcapi` protocol:
       </p>
       <figure>
-        <pre class="mermaid">
+        <pre class="mermaid" style="max-width:100%">
 sequenceDiagram
   participant H as Holder
   participant W as Holder Coordinator (Wallet)
@@ -2908,7 +2908,7 @@ using a QR Code to share it with a [=verifier=], and proceeding with the
 `inviteRequest` protocol:
       </p>
       <figure>
-        <pre class="mermaid">
+        <pre class="mermaid" style="max-width:100%">
 sequenceDiagram
   participant H as Holder
   participant W as Holder Coordinator (Wallet)
