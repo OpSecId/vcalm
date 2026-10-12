@@ -1765,20 +1765,23 @@ If <var>example</var> contains an <code>@context</code> property, initialize
 <var>expectedContexts</var> to its value normalized to a [=list=], and
 initialize <var>credentialContexts</var> to the value of the
 <code>@context</code> property of <var>credential</var> normalized to a
-[=list=]. If the length of <var>credentialContexts</var> is less than the
-length of <var>expectedContexts</var>, return <code>false</code>. For each
-index <var>i</var> from <code>0</code> to the length of
-<var>expectedContexts</var> minus one, if
-<var>expectedContexts</var>[<var>i</var>] is not strictly equal to
-<var>credentialContexts</var>[<var>i</var>], return <code>false</code>.
+[=list=]. Ensure the contexts in the credential match each of the required
+contexts in order, allowing subsequent contexts in the credential after all
+required contexts. Specifically: if the length of
+<var>credentialContexts</var> is less than the length of
+<var>expectedContexts</var>, return <code>false</code>. For each index
+<var>i</var> from <code>0</code> to the length of <var>expectedContexts</var>
+minus one, if <var>expectedContexts</var>[<var>i</var>] is not strictly equal
+to <var>credentialContexts</var>[<var>i</var>], return <code>false</code>.
                 </li>
                 <li>
 If <var>example</var> contains a <code>type</code> property, initialize
 <var>expectedTypes</var> to its value normalized to a [=list=], and initialize
 <var>credentialTypes</var> to the value of the <code>type</code> property of
-<var>credential</var> normalized to a [=list=]. If no value in
-<var>expectedTypes</var> is strictly equal to any value in
-<var>credentialTypes</var>, return <code>false</code>.
+<var>credential</var> normalized to a [=list=]. Every value in
+<var>expectedTypes</var> MUST be strictly equal to at least one value in
+<var>credentialTypes</var>; if any value in <var>expectedTypes</var> is
+missing from <var>credentialTypes</var>, return <code>false</code>.
                 </li>
                 <li>
 Initialize <var>remaining</var> to a copy of <var>example</var> with the
@@ -1825,7 +1828,7 @@ value is strictly equal to <var>credentialIssuer</var>.
                     <li>
 <var>item</var> is a [=map=] that contains a <code>recognizedIn</code>
 property, and <var>credentialIssuer</var> is recognized according to the
-[[[VC-RECOG-ENT]]] specification using that property's value.
+[[[VC-RECOGNIZED-ENTITIES]]] specification using that property's value.
                     </li>
                   </ol>
                 </li>
